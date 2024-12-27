@@ -22,31 +22,29 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="d-flex">
-        <a class="navbar-brand" href="no1.html">
-          <img src="logo.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top" />
-          Perpustakaan Sekolah
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <div class="container">
+        <div class="d-flex">
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="logo.jpg" alt="Logo" width="30" height="30" class="me-2" />
+            Perpustakaan Sekolah
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="no1.html">Home</a>
+              <a class="nav-link active" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
+              <a class="nav-link" href="about.html">About</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Layanan </a>
               <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                <li>
-                  <a class="dropdown-item" href="pendaftaran.html">Pendaftaran Anggota</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="informasi.html">Informasi Layanan</a>
-                </li>
+                <li><a class="dropdown-item" href="pendaftaran.html">Pendaftaran Anggota</a></li>
+                <li><a class="dropdown-item" href="informasi.html">Informasi Layanan</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -56,7 +54,6 @@
         </div>
       </div>
     </nav>
-
     <!-- Jumbotron -->
     <div class="jumbotron">
       <h1 class="display-4">Pendaftaran Anggota</h1>
@@ -108,6 +105,23 @@
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzyGRgWtHz4qMd_CBfwZCdbQzBZC9T1jwbqE--Sma7FwnVNXAh4Q191JK6bGJqzr5E/exec';
+      const form = document.getElementById('registrationForm');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then((response) => {
+            alert('Pendaftaran berhasil!');
+            form.reset();
+          })
+          .catch((error) => {
+            console.error('Error!', error.message);
+            alert('Terjadi kesalahan, coba lagi nanti.');
+          });
+      });
+    </script>
+   </body>
 </html>
